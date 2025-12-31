@@ -1,0 +1,6 @@
+@BlogDemo.DecoupleRxNET_HostAddress = http://localhost:5252
+
+GET {{BlogDemo.DecoupleRxNET_HostAddress}}/Order/Confirm
+Accept: application/json
+
+###
