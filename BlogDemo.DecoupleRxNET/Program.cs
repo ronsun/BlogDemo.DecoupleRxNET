@@ -15,6 +15,8 @@ namespace DecoupleRxNET
             builder.Services.AddScoped<IStockService, StockService>();
             builder.Services.AddScoped<IAccountingService, AccountingService>();
 
+            builder.Services.AddScoped<IObserver<OrderConfirming>, OrderConfirmingSubscriber>();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

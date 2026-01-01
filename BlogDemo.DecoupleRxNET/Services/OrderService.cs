@@ -4,10 +4,11 @@ using BlogDemo.DecoupleRxNET.RxNET.Order;
 namespace BlogDemo.DecoupleRxNET.Services
 {
     public class OrderService(
-        ILogger<OrderService> logger)
+        ILogger<OrderService> logger,
+        IObserver<OrderConfirming> orderConfirmingObserver)
         : IOrderService
     {
-        public void Confirm(Guid orderId, IObserver<OrderConfirming> observer)
+        public void Confirm(Guid orderId)
         {
             logger.LogInformation($"Order confirming: {orderId}");
 
@@ -32,7 +33,7 @@ namespace BlogDemo.DecoupleRxNET.Services
                 }
             };
 
-            observer.OnNext(message);
+            orderConfirmingObserver.OnNext(message);
 
             logger.LogInformation($"Order confirming: {orderId}, doing something else.");
 
